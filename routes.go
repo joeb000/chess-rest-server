@@ -32,7 +32,18 @@ var routes = Routes{
 		"/chess/{gameid}",
 		ChessState,
 	},
-
+	Route{
+		"ChessCreate",
+		"POST",
+		"/create",
+		ChessCreate,
+	},
+	Route{
+		"ChessJoin",
+		"POST",
+		"/join/{gameid}",
+		ChessJoin,
+	},
 	Route{
 		"Index",
 		"GET",
