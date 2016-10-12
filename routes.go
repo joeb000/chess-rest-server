@@ -45,6 +45,12 @@ var routes = Routes{
 		ChessJoin,
 	},
 	Route{
+		"ChessFind",
+		"GET",
+		"/find/{gameid}",
+		ChessFind,
+	},
+	Route{
 		"Index",
 		"GET",
 		"/",

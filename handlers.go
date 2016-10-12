@@ -26,6 +26,22 @@ func ChessState(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Game ID:", gid)
 }
 
+func ChessFind(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	sgid := vars["gameid"]
+	gid, _ := strconv.Atoi(sgid)
+
+	g := FindGame(gid)
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusCreated)
+	if err := json.NewEncoder(w).Encode(g); err != nil {
+		panic(err)
+	}
+
+	//fmt.Fprintln(w, "Game ID:", gid)
+}
+
 func ChessCreate(w http.ResponseWriter, r *http.Request) {
 	var player Player
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))

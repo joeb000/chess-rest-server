@@ -11,9 +11,10 @@ type Move struct {
 }
 
 type Game struct {
-	Id int `json:"id"`
-	P1 Player
-	P2 Player
+	Id           int `json:"id"`
+	P1           Player
+	P2           Player
+	CurrentState [8][8]Piece
 }
 
 type Games []Game
@@ -24,4 +25,10 @@ type Player struct {
 	Wins   int
 	Losses int
 	auth   string
+}
+
+type Piece struct {
+	Color bool
+	Type  string
+	Id    int
 }
