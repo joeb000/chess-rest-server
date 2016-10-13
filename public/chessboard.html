@@ -32,6 +32,14 @@
 </style>
 </head>
 <body>
+<script>
+	function swap(s1, s2){
+		var from = document.getElementById(s1);
+		var to = document.getElementById(s2);
+		to.innerHTML = from.innerHTML;
+		from.innerHTML=""
+	}
+</script>
 <div class="chessboard">
 <!-- 1st -->
 <div id="a0" class="white">&#9820;</div>
@@ -43,14 +51,14 @@
 <div id="g0" class="white">&#9822;</div>
 <div id="h0" class="black">&#9820;</div>
 <!-- 2nd -->
-<div id="a1" class="black">&#9821;</div>
-<div id="b1" class="white">&#9821;</div>
-<div id="c1" class="black">&#9821;</div>
-<div id="d1" class="white">&#9821;</div>
-<div id="e1" class="black">&#9821;</div>
-<div id="f1" class="white">&#9821;</div>
-<div id="g1" class="black">&#9821;</div>
-<div id="h1" class="white">&#9821;</div>
+<div id="a1" class="black">&#9823;</div>
+<div id="b1" class="white">&#9823;</div>
+<div id="c1" class="black">&#9823;</div>
+<div id="d1" class="white">&#9823;</div>
+<div id="e1" class="black">&#9823;</div>
+<div id="f1" class="white">&#9823;</div>
+<div id="g1" class="black">&#9823;</div>
+<div id="h1" class="white">&#9823;</div>
 <!-- 3th -->
 <div id="a2" class="white"></div>
 <div id="b2" class="black"></div>
@@ -106,5 +114,6 @@
 <div id="g7" class="black">&#9816;</div>
 <div id="h7" class="white">&#9814;</div>
 </div>
+<button onclick="swap('a0','a1')">Click me</button>
 </body>
 </html>

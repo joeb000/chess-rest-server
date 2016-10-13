@@ -6,12 +6,93 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
+	"text/template"
 
 	"github.com/gorilla/mux"
+)
+
+type Fields struct{ val string }
+
+const (
+	innerhtml = `<div class="chessboard">
+<!-- 1st -->
+<div id="a0" class="white">&#9820;</div>
+<div id="b0" class="black">&#9822;</div>
+<div id="c0" class="white">&#9821;</div>
+<div id="d0" class="black">&#9819;</div>
+<div id="e0" class="white">&#9818;</div>
+<div id="f0" class="black">&#9821;</div>
+<div id="g0" class="white">&#9822;</div>
+<div id="h0" class="black">&#9820;</div>
+<!-- 2nd -->
+<div id="a1" class="black">&#9823;</div>
+<div id="b1" class="white">&#9823;</div>
+<div id="c1" class="black">&#9823;</div>
+<div id="d1" class="white">&#9823;</div>
+<div id="e1" class="black">&#9823;</div>
+<div id="f1" class="white">&#9823;</div>
+<div id="g1" class="black">&#9823;</div>
+<div id="h1" class="white">&#9823;</div>
+<!-- 3th -->
+<div id="a2" class="white"></div>
+<div id="b2" class="black"></div>
+<div id="c2" class="white"></div>
+<div id="d2" class="black"></div>
+<div id="e2" class="white"></div>
+<div id="f2" class="black"></div>
+<div id="g2" class="white"></div>
+<div id="h2" class="black"></div>
+<!-- 4st -->
+<div id="a3" class="black"></div>
+<div id="b3" class="white"></div>
+<div id="c3" class="black"></div>
+<div id="d3" class="white"></div>
+<div id="e3" class="black"></div>
+<div id="f3" class="white"></div>
+<div id="g3" class="black"></div>
+<div id="h3" class="white"></div>
+<!-- 5th -->
+<div id="a4" class="white"></div>
+<div id="b4" class="black"></div>
+<div id="c4" class="white"></div>
+<div id="d4" class="black"></div>
+<div id="e4" class="white"></div>
+<div id="f4" class="black"></div>
+<div id="g4" class="white"></div>
+<div id="h4" class="black"></div>
+<!-- 6th -->
+<div id="a5" class="black"></div>
+<div id="b5" class="white"></div>
+<div id="c5" class="black"></div>
+<div id="d5" class="white"></div>
+<div id="e5" class="black"></div>
+<div id="f5" class="white"></div>
+<div id="g5" class="black"></div>
+<div id="h5" class="white"></div>
+<!-- 7th -->
+<div id="a6" class="white">&#9817;</div>
+<div id="b6" class="black">&#9817;</div>
+<div id="c6" class="white">&#9817;</div>
+<div id="d6" class="black">&#9817;</div>
+<div id="e6" class="white">&#9817;</div>
+<div id="f6" class="black">&#9817;</div>
+<div id="g6" class="white">&#9817;</div>
+<div id="h6" class="black">&#9817;</div>
+<!-- 8th -->
+<div id="a7" class="black">&#9814;</div>
+<div id="b7" class="white">&#9816;</div>
+<div id="c7" class="black">&#9815;</div>
+<div id="d7" class="white">&#9813;</div>
+<div id="e7" class="black">&#9812;</div>
+<div id="f7" class="white">&#9815;</div>
+<div id="g7" class="black">&#9816;</div>
+<div id="h7" class="white">&#9814;</div>
+</div>`
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -163,5 +244,19 @@ func ChessMove(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(state); err != nil {
 		panic(err)
+	}
+}
+
+func TemplateHandle(w http.ResponseWriter, r *http.Request) {
+	t := template.New("chesstemplate.html")                   //create a new template
+	temp, err := t.ParseFiles("../public/chesstemplate.html") //open and parse a template text file
+	if err != nil {
+		log.Fatal(err)
+	}
+	user := Piece{Type: innerhtml}
+	//a method we have separately defined to get the value for a type
+	err = temp.Execute(w, user) //substitute fields in the template 't', with values from 'user' and write it out to 'w' which implements io.Writer
+	if err != nil {
+		log.Fatal(err)
 	}
 }

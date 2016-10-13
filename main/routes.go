@@ -56,4 +56,10 @@ var routes = Routes{
 		"/",
 		Index,
 	},
+	Route{
+		"TEST",
+		"GET",
+		"/test",
+		TemplateHandle,
+	},
 }
