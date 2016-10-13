@@ -10,13 +10,14 @@ var currentGameId int
 
 var games Games
 
-func FindGame(id int) Game {
-	for _, g := range games {
-		if g.Id == id {
-			return g
+func FindGame(id int) *Game {
+	for i, _ := range games {
+		if games[i].Id == id {
+			return &games[i]
 		}
 	}
-	return Game{}
+	emptyGame := Game{}
+	return &emptyGame
 }
 
 func JoinGame(p Player, i int) Game {
@@ -25,7 +26,7 @@ func JoinGame(p Player, i int) Game {
 	g.initState()
 	//todo
 
-	return g
+	return *g
 }
 
 func CreateGame(p Player) Game {
@@ -35,6 +36,18 @@ func CreateGame(p Player) Game {
 	g.P1 = p
 	games = append(games, g)
 	return g
+}
+
+func ProcessMove(move Move) {
+	g := FindGame(move.GameID)
+	fmt.Println("found game")
+	//get piece at from
+	piece := g.getPieceAt(move.FromSquare)
+	//move piece to
+	if g.movePiece(piece, move.ToSquare) {
+		g.makeEmpty(move.FromSquare)
+	}
+
 }
 
 func (g *Game) initState() {
@@ -99,7 +112,25 @@ func (g *Game) placePiece(square string, p Piece) {
 	col := convertColString(square[0:1])
 	row, _ := strconv.Atoi(square[1:2])
 	g.CurrentState[row][col] = p
+}
 
+func (g *Game) getPieceAt(square string) Piece {
+	col := convertColString(square[0:1])
+	row, _ := strconv.Atoi(square[1:2])
+	return g.CurrentState[row][col]
+}
+
+func (g *Game) movePiece(piece Piece, square string) bool {
+	col := convertColString(square[0:1])
+	row, _ := strconv.Atoi(square[1:2])
+	g.CurrentState[row][col] = piece
+	return true
+}
+
+func (g *Game) makeEmpty(square string) {
+	col := convertColString(square[0:1])
+	row, _ := strconv.Atoi(square[1:2])
+	g.CurrentState[row][col] = Piece{}
 }
 
 func convertColString(s string) int {

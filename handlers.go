@@ -118,10 +118,13 @@ func ChessMove(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 	}
+	ProcessMove(move)
+
+	state := FindGame(move.GameID)
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
-	if err := json.NewEncoder(w).Encode(move); err != nil {
+	if err := json.NewEncoder(w).Encode(state); err != nil {
 		panic(err)
 	}
 }

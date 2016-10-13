@@ -1,13 +1,13 @@
 package main
 
-import "time"
+//import "time"
 
 type Move struct {
-	GameID   int       `json:"game_id"`
-	PlayerID int       `json:"player_id"`
-	PieceID  string    `json:"piece_id"`
-	Square   string    `json:"square"`
-	Time     time.Time `json:"time"`
+	GameID     int    `json:"game_id"`
+	PlayerID   int    `json:"player_id"`
+	FromSquare string `json:"from_square"`
+	ToSquare   string `json:"to_square"`
+	//Time     time.Time `json:"time"`
 }
 
 type Game struct {

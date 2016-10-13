@@ -23,7 +23,7 @@ var routes = Routes{
 	Route{
 		"ChessMove",
 		"POST",
-		"/move",
+		"/move/{gameid}",
 		ChessMove,
 	},
 	Route{
