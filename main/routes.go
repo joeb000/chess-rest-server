@@ -30,7 +30,7 @@ var routes = Routes{
 		"ChessState",
 		"GET",
 		"/chess/{gameid}",
-		ChessFind,
+		DisplayBoard,
 	},
 	Route{
 		"ChessCreate",
