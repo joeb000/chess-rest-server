@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 var currentGameId int
@@ -23,8 +24,7 @@ func JoinGame(p Player, i int) Game {
 	g.P2 = p
 	g.initState()
 	//todo
-	pi := Piece{true, "Rook", 2}
-	g.placePiece("a2", pi)
+
 	return g
 }
 
@@ -40,9 +40,56 @@ func CreateGame(p Player) Game {
 func (g *Game) initState() {
 	for col := range g.CurrentState {
 		for row := range g.CurrentState {
-			g.CurrentState[col][row] = Piece{false, "piece", col + row}
+			g.CurrentState[col][row] = Piece{}
 		}
 	}
+	wPawn := Piece{true, "Pawn", 1}
+	wKing := Piece{true, "King", 1}
+	wQueen := Piece{true, "Queen", 1}
+	wRook := Piece{true, "Rook", 1}
+	wBishop := Piece{true, "Bishop", 1}
+	wKnight := Piece{true, "Knight", 1}
+
+	bPawn := Piece{false, "Pawn", 2}
+	bKing := Piece{false, "King", 2}
+	bQueen := Piece{false, "Queen", 2}
+	bRook := Piece{false, "Rook", 2}
+	bBishop := Piece{false, "Bishop", 2}
+	bKnight := Piece{false, "Knight", 2}
+
+	g.placePiece("A0", bRook)
+	g.placePiece("B0", bKnight)
+	g.placePiece("C0", bBishop)
+	g.placePiece("D0", bKing)
+	g.placePiece("E0", bQueen)
+	g.placePiece("F0", bBishop)
+	g.placePiece("G0", bKnight)
+	g.placePiece("H0", bRook)
+	g.placePiece("A1", bPawn)
+	g.placePiece("B1", bPawn)
+	g.placePiece("C1", bPawn)
+	g.placePiece("D1", bPawn)
+	g.placePiece("E1", bPawn)
+	g.placePiece("F1", bPawn)
+	g.placePiece("G1", bPawn)
+	g.placePiece("H1", bPawn)
+
+	g.placePiece("A7", wRook)
+	g.placePiece("B7", wKnight)
+	g.placePiece("C7", wBishop)
+	g.placePiece("D7", wKing)
+	g.placePiece("E7", wQueen)
+	g.placePiece("F7", wBishop)
+	g.placePiece("G7", wKnight)
+	g.placePiece("H7", wRook)
+	g.placePiece("A6", wPawn)
+	g.placePiece("B6", wPawn)
+	g.placePiece("C6", wPawn)
+	g.placePiece("D6", wPawn)
+	g.placePiece("E6", wPawn)
+	g.placePiece("F6", wPawn)
+	g.placePiece("G6", wPawn)
+	g.placePiece("H6", wPawn)
 }
 
 func (g *Game) placePiece(square string, p Piece) {
@@ -56,6 +103,7 @@ func (g *Game) placePiece(square string, p Piece) {
 }
 
 func convertColString(s string) int {
+	s = strings.ToLower(s)
 	switch s {
 	case "a":
 		return 0
