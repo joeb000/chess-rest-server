@@ -23,14 +23,14 @@ var routes = Routes{
 	Route{
 		"ChessMove",
 		"POST",
-		"/move/{gameid}",
+		"/move",
 		ChessMove,
 	},
 	Route{
 		"ChessState",
 		"GET",
 		"/chess/{gameid}",
-		ChessState,
+		ChessFind,
 	},
 	Route{
 		"ChessCreate",

@@ -4,7 +4,7 @@ RESTful API for managing chess gameplay written in golang
 ## Clone and install
 
     git clone https://github.com/joeb000/chess-rest-server
-    cd chess-rest-server
+    cd chess-rest-server/main
     go get
     go run *.go
     
