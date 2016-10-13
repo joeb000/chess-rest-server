@@ -25,3 +25,18 @@ Chess server exposes HTTP endpoints that can handle `GET` and `POST` calls.
     /join/{gameid} - takes a JSON Player object and joins empty game at given gameid, returns Game object
     
     /move - takes a Move JSON object and updates the game state accordingly - returns game object
+
+
+## Example Gameplay
+    
+    # To Create a new game as player "Alice"
+    curl -H "Content-Type: application/json" -d '{"Id":10, "Name":"Alice"}' http://localhost:8080/create
+    
+    # To Join Game ID 1 as player "Bob"
+    curl -H "Content-Type: application/json" -d '{"Id":11, "Name":"Bob"}' http://localhost:8080/join/1
+    
+    # To Move piece from square A1 to square A2
+    curl -H "Content-Type: application/json" -d '{"game_id":1, "player_id":10, "from_square":"A1", "to_square":"A2"}' http://localhost:8080/move
+    
+To check game state: http://localhost:8080/chess/1
+
