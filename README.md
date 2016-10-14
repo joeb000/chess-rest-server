@@ -38,5 +38,5 @@ Chess server exposes HTTP endpoints that can handle `GET` and `POST` calls.
     # To Move piece from square A1 to square A2
     curl -H "Content-Type: application/json" -d '{"game_id":1, "player_id":10, "from_square":"A1", "to_square":"A2"}' http://localhost:8080/move
     
-To check game state: http://localhost:8080/chess/1
+To check game state: http://localhost:8080/find/1
 
