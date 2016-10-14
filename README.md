@@ -1,4 +1,4 @@
-# chess-rest-server - WORK IN PROGRESS
+# ♜  chess-rest-server  ♜
 RESTful API for managing chess gameplay written in golang
 
 ## Clone and install
