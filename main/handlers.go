@@ -247,15 +247,58 @@ func ChessMove(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func TemplateHandle(w http.ResponseWriter, r *http.Request) {
-	t := template.New("chesstemplate.html")                   //create a new template
-	temp, err := t.ParseFiles("../public/chesstemplate.html") //open and parse a template text file
+func ChessFormMove(w http.ResponseWriter, r *http.Request) {
+	var move Move
+	move.FromSquare = r.FormValue("from_square")
+	move.ToSquare = r.FormValue("to_square")
+
+	move.GameID, _ = strconv.Atoi(r.FormValue("game_id"))
+
+	ProcessMove(move)
+
+	t := template.New("emptyboard.html")
+	temp, err := t.ParseFiles("../public/emptyboard.html")
 	if err != nil {
 		log.Fatal(err)
 	}
-	user := Piece{Type: innerhtml}
-	//a method we have separately defined to get the value for a type
-	err = temp.Execute(w, user) //substitute fields in the template 't', with values from 'user' and write it out to 'w' which implements io.Writer
+	game := *FindGame(move.GameID)
+	board := game.Board
+
+	err = temp.Execute(w, board)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func ShowBoard(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	sgid := vars["gameid"]
+	gid, err := strconv.Atoi(sgid)
+
+	t := template.New("emptyboard.html")
+	temp, err := t.ParseFiles("../public/emptyboard.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	game := *FindGame(gid)
+	board := game.Board
+
+	err = temp.Execute(w, board)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func TemplateBoard(w http.ResponseWriter, r *http.Request) {
+	t := template.New("emptyboard.html")
+	temp, err := t.ParseFiles("../public/emptyboard.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	board := BuildNewBoard()
+
+	err = temp.Execute(w, board)
 	if err != nil {
 		log.Fatal(err)
 	}

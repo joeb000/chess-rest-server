@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chessboard using Pure CSS and HTML</title>
+<style type="text/css">
+.chessboard {
+    width: 640px;
+    height: 640px;
+    margin: 20px;
+    border: 25px solid #333;
+}
+.black {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #999;
+      font-size:50px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+.white {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    font-size:50px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+</style>
+</head>
+<body>
+<script>
+	function swap(s1, s2){
+		var from = document.getElementById(s1);
+		var to = document.getElementById(s2);
+		to.innerHTML = from.innerHTML;
+		from.innerHTML=""
+	}
+</script>
+<div class="chessboard">
+<!-- 1st -->
+<div id="a0" class="white">{{.A0.Code}}</div>
+<div id="b0" class="black">{{.B0.Code}}</div>
+<div id="c0" class="white">{{.C0.Code}}</div>
+<div id="d0" class="black">{{.D0.Code}}</div>
+<div id="e0" class="white">{{.E0.Code}}</div>
+<div id="f0" class="black">{{.F0.Code}}</div>
+<div id="g0" class="white">{{.G0.Code}}</div>
+<div id="h0" class="black">{{.H0.Code}}</div>
+<!-- 2nd -->
+<div id="a1" class="black">{{.A1.Code}}</div>
+<div id="b1" class="white">{{.B1.Code}}</div>
+<div id="c1" class="black">{{.C1.Code}}</div>
+<div id="d1" class="white">{{.D1.Code}}</div>
+<div id="e1" class="black">{{.E1.Code}}</div>
+<div id="f1" class="white">{{.F1.Code}}</div>
+<div id="g1" class="black">{{.G1.Code}}</div>
+<div id="h1" class="white">{{.H1.Code}}</div>
+<!-- 3th -->
+<div id="a2" class="white">{{.A2.Code}}</div>
+<div id="b2" class="black">{{.B2.Code}}</div>
+<div id="c2" class="white">{{.C2.Code}}</div>
+<div id="d2" class="black">{{.D2.Code}}</div>
+<div id="e2" class="white">{{.E2.Code}}</div>
+<div id="f2" class="black">{{.F2.Code}}</div>
+<div id="g2" class="white">{{.G2.Code}}</div>
+<div id="h2" class="black">{{.H2.Code}}</div>
+<!-- 4st -->
+<div id="a3" class="black">{{.A3.Code}}</div>
+<div id="b3" class="white">{{.B3.Code}}</div>
+<div id="c3" class="black">{{.C3.Code}}</div>
+<div id="d3" class="white">{{.D3.Code}}</div>
+<div id="e3" class="black">{{.E3.Code}}</div>
+<div id="f3" class="white">{{.F3.Code}}</div>
+<div id="g3" class="black">{{.G3.Code}}</div>
+<div id="h3" class="white">{{.H3.Code}}</div>
+<!-- 5th -->
+<div id="a4" class="white">{{.A4.Code}}</div>
+<div id="b4" class="black">{{.B4.Code}}</div>
+<div id="c4" class="white">{{.C4.Code}}</div>
+<div id="d4" class="black">{{.D4.Code}}</div>
+<div id="e4" class="white">{{.E4.Code}}</div>
+<div id="f4" class="black">{{.F4.Code}}</div>
+<div id="g4" class="white">{{.G4.Code}}</div>
+<div id="h4" class="black">{{.H4.Code}}</div>
+<!-- 6th -->
+<div id="a5" class="black">{{.A5.Code}}</div>
+<div id="b5" class="white">{{.B5.Code}}</div>
+<div id="c5" class="black">{{.C5.Code}}</div>
+<div id="d5" class="white">{{.D5.Code}}</div>
+<div id="e5" class="black">{{.E5.Code}}</div>
+<div id="f5" class="white">{{.F5.Code}}</div>
+<div id="g5" class="black">{{.G5.Code}}</div>
+<div id="h5" class="white">{{.H5.Code}}</div>
+<!-- 7th -->
+<div id="a6" class="white">{{.A6.Code}}</div>
+<div id="b6" class="black">{{.B6.Code}}</div>
+<div id="c6" class="white">{{.C6.Code}}</div>
+<div id="d6" class="black">{{.D6.Code}}</div>
+<div id="e6" class="white">{{.E6.Code}}</div>
+<div id="f6" class="black">{{.F6.Code}}</div>
+<div id="g6" class="white">{{.G6.Code}}</div>
+<div id="h6" class="black">{{.H6.Code}}</div>
+<!-- 8th -->
+<div id="a7" class="black">{{.A7.Code}}</div>
+<div id="b7" class="white">{{.B7.Code}}</div>
+<div id="c7" class="black">{{.C7.Code}}</div>
+<div id="d7" class="white">{{.D7.Code}}</div>
+<div id="e7" class="black">{{.E7.Code}}</div>
+<div id="f7" class="white">{{.F7.Code}}</div>
+<div id="g7" class="black">{{.G7.Code}}</div>
+<div id="h7" class="white">{{.H7.Code}}</div>
+</div>
+<button onclick="swap('a0','a1')">Click me</button>
+
+ <form action="/moveform" method="POST">
+GameID: <input type="number" name="game_id">  <br>
+
+FROM: <input type="text" name="from_square">
+TO: <input type="text" name="to_square">
+
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>

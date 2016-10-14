@@ -27,10 +27,16 @@ var routes = Routes{
 		ChessMove,
 	},
 	Route{
+		"ChessFormMove",
+		"POST",
+		"/moveform",
+		ChessFormMove,
+	},
+	Route{
 		"ChessState",
 		"GET",
 		"/chess/{gameid}",
-		DisplayBoard,
+		ShowBoard,
 	},
 	Route{
 		"ChessCreate",
@@ -60,6 +66,6 @@ var routes = Routes{
 		"TEST",
 		"GET",
 		"/test",
-		TemplateHandle,
+		TemplateBoard,
 	},
 }
