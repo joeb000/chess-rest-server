@@ -9,6 +9,10 @@ type Move struct {
 	ToSquare   string `json:"to_square"`
 	//Time     time.Time `json:"time"`
 }
+type Both struct {
+	B Board
+	G Game
+}
 
 type OldGame struct {
 	Id           int `json:"id"`

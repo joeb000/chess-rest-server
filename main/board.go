@@ -37,8 +37,8 @@ func BuildNewBoard() Board {
 	newBoard.A7.Code = WhiteRook
 	newBoard.B7.Code = WhiteKnight
 	newBoard.C7.Code = WhiteBishop
-	newBoard.D7.Code = WhiteKing
-	newBoard.E7.Code = WhiteQueen
+	newBoard.D7.Code = WhiteQueen
+	newBoard.E7.Code = WhiteKing
 	newBoard.F7.Code = WhiteBishop
 	newBoard.G7.Code = WhiteKnight
 	newBoard.H7.Code = WhiteRook

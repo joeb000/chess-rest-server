@@ -1,30 +1,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chessboard using Pure CSS and HTML</title>
+<title>Chessb using Pure CSS and HTML</title>
 <style type="text/css">
 .chessboard {
-    width: 640px;
-    height: 640px;
+    width: 480px;
+    height: 480px;
     margin: 20px;
     border: 25px solid #333;
 }
 .black {
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: #999;
-      font-size:50px;
+      font-size:40px;
     text-align:center;
     display: table-cell;
     vertical-align:middle;
 }
 .white {
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: #fff;
-    font-size:50px;
+    font-size:40px;
     text-align:center;
     display: table-cell;
     vertical-align:middle;
@@ -33,94 +33,111 @@
 </head>
 <body>
 <script>
+	
 	function swap(s1, s2){
 		var from = document.getElementById(s1);
-		var to = document.getElementById(s2);
+		var to = document.getEl.ementById(s2);
 		to.innerHTML = from.innerHTML;
 		from.innerHTML=""
 	}
+	
+	var i=3;
+	
+function squareClick(e){
+
+  var id = e.id
+
+	console.log('j '+id+' '+ typeof id)
+	if (i%2==0){
+		console.log("0000")
+		document.getElementById('tobox').value=id
+	} else {
+		console.log("1111")
+		document.getElementById('frombox').value=id
+	}
+	i++;
+}
 </script>
 <div class="chessboard">
 <!-- 1st -->
-<div id="a0" class="white">{{.A0.Code}}</div>
-<div id="b0" class="black">{{.B0.Code}}</div>
-<div id="c0" class="white">{{.C0.Code}}</div>
-<div id="d0" class="black">{{.D0.Code}}</div>
-<div id="e0" class="white">{{.E0.Code}}</div>
-<div id="f0" class="black">{{.F0.Code}}</div>
-<div id="g0" class="white">{{.G0.Code}}</div>
-<div id="h0" class="black">{{.H0.Code}}</div>
+<div id="A0" onclick="squareClick(this)" class="white">{{.B.A0.Code}}</div>
+<div id="B0" onclick="squareClick(this)" class="black">{{.B.B0.Code}}</div>
+<div id="C0" onclick="squareClick(this)" class="white">{{.B.C0.Code}}</div>
+<div id="D0" onclick="squareClick(this)" class="black">{{.B.D0.Code}}</div>
+<div id="E0" onclick="squareClick(this)" class="white">{{.B.E0.Code}}</div>
+<div id="F0" onclick="squareClick(this)" class="black">{{.B.F0.Code}}</div>
+<div id="G0" onclick="squareClick(this)" class="white">{{.B.G0.Code}}</div>
+<div id="H0" onclick="squareClick(this)" class="black">{{.B.H0.Code}}</div>
 <!-- 2nd -->
-<div id="a1" class="black">{{.A1.Code}}</div>
-<div id="b1" class="white">{{.B1.Code}}</div>
-<div id="c1" class="black">{{.C1.Code}}</div>
-<div id="d1" class="white">{{.D1.Code}}</div>
-<div id="e1" class="black">{{.E1.Code}}</div>
-<div id="f1" class="white">{{.F1.Code}}</div>
-<div id="g1" class="black">{{.G1.Code}}</div>
-<div id="h1" class="white">{{.H1.Code}}</div>
+<div id="A1" onclick="squareClick(this)" class="black">{{.B.A1.Code}}</div>
+<div id="B1" onclick="squareClick(this)" class="white">{{.B.B1.Code}}</div>
+<div id="C1" onclick="squareClick(this)" class="black">{{.B.C1.Code}}</div>
+<div id="D1" onclick="squareClick(this)" class="white">{{.B.D1.Code}}</div>
+<div id="E1" onclick="squareClick(this)" class="black">{{.B.E1.Code}}</div>
+<div id="F1" onclick="squareClick(this)" class="white">{{.B.F1.Code}}</div>
+<div id="G1" onclick="squareClick(this)" class="black">{{.B.G1.Code}}</div>
+<div id="H1" onclick="squareClick(this)" class="white">{{.B.H1.Code}}</div>
 <!-- 3th -->
-<div id="a2" class="white">{{.A2.Code}}</div>
-<div id="b2" class="black">{{.B2.Code}}</div>
-<div id="c2" class="white">{{.C2.Code}}</div>
-<div id="d2" class="black">{{.D2.Code}}</div>
-<div id="e2" class="white">{{.E2.Code}}</div>
-<div id="f2" class="black">{{.F2.Code}}</div>
-<div id="g2" class="white">{{.G2.Code}}</div>
-<div id="h2" class="black">{{.H2.Code}}</div>
+<div id="A2" onclick="squareClick(this)" class="white">{{.B.A2.Code}}</div>
+<div id="B2" onclick="squareClick(this)" class="black">{{.B.B2.Code}}</div>
+<div id="C2" onclick="squareClick(this)" class="white">{{.B.C2.Code}}</div>
+<div id="D2" onclick="squareClick(this)" class="black">{{.B.D2.Code}}</div>
+<div id="E2" onclick="squareClick(this)" class="white">{{.B.E2.Code}}</div>
+<div id="F2" onclick="squareClick(this)" class="black">{{.B.F2.Code}}</div>
+<div id="G2" onclick="squareClick(this)" class="white">{{.B.G2.Code}}</div>
+<div id="H2" onclick="squareClick(this)" class="black">{{.B.H2.Code}}</div>
 <!-- 4st -->
-<div id="a3" class="black">{{.A3.Code}}</div>
-<div id="b3" class="white">{{.B3.Code}}</div>
-<div id="c3" class="black">{{.C3.Code}}</div>
-<div id="d3" class="white">{{.D3.Code}}</div>
-<div id="e3" class="black">{{.E3.Code}}</div>
-<div id="f3" class="white">{{.F3.Code}}</div>
-<div id="g3" class="black">{{.G3.Code}}</div>
-<div id="h3" class="white">{{.H3.Code}}</div>
+<div id="A3" onclick="squareClick(this)" class="black">{{.B.A3.Code}}</div>
+<div id="B3" onclick="squareClick(this)" class="white">{{.B.B3.Code}}</div>
+<div id="C3" onclick="squareClick(this)" class="black">{{.B.C3.Code}}</div>
+<div id="D3" onclick="squareClick(this)" class="white">{{.B.D3.Code}}</div>
+<div id="E3" onclick="squareClick(this)" class="black">{{.B.E3.Code}}</div>
+<div id="F3" onclick="squareClick(this)" class="white">{{.B.F3.Code}}</div>
+<div id="G3" onclick="squareClick(this)" class="black">{{.B.G3.Code}}</div>
+<div id="H3" onclick="squareClick(this)" class="white">{{.B.H3.Code}}</div>
 <!-- 5th -->
-<div id="a4" class="white">{{.A4.Code}}</div>
-<div id="b4" class="black">{{.B4.Code}}</div>
-<div id="c4" class="white">{{.C4.Code}}</div>
-<div id="d4" class="black">{{.D4.Code}}</div>
-<div id="e4" class="white">{{.E4.Code}}</div>
-<div id="f4" class="black">{{.F4.Code}}</div>
-<div id="g4" class="white">{{.G4.Code}}</div>
-<div id="h4" class="black">{{.H4.Code}}</div>
+<div id="A4" onclick="squareClick(this)" class="white">{{.B.A4.Code}}</div>
+<div id="B4" onclick="squareClick(this)" class="black">{{.B.B4.Code}}</div>
+<div id="C4" onclick="squareClick(this)" class="white">{{.B.C4.Code}}</div>
+<div id="D4" onclick="squareClick(this)" class="black">{{.B.D4.Code}}</div>
+<div id="E4" onclick="squareClick(this)" class="white">{{.B.E4.Code}}</div>
+<div id="F4" onclick="squareClick(this)" class="black">{{.B.F4.Code}}</div>
+<div id="G4" onclick="squareClick(this)" class="white">{{.B.G4.Code}}</div>
+<div id="H4" onclick="squareClick(this)" class="black">{{.B.H4.Code}}</div>
 <!-- 6th -->
-<div id="a5" class="black">{{.A5.Code}}</div>
-<div id="b5" class="white">{{.B5.Code}}</div>
-<div id="c5" class="black">{{.C5.Code}}</div>
-<div id="d5" class="white">{{.D5.Code}}</div>
-<div id="e5" class="black">{{.E5.Code}}</div>
-<div id="f5" class="white">{{.F5.Code}}</div>
-<div id="g5" class="black">{{.G5.Code}}</div>
-<div id="h5" class="white">{{.H5.Code}}</div>
+<div id="A5" onclick="squareClick(this)" class="black">{{.B.A5.Code}}</div>
+<div id="B5" onclick="squareClick(this)" class="white">{{.B.B5.Code}}</div>
+<div id="C5" onclick="squareClick(this)" class="black">{{.B.C5.Code}}</div>
+<div id="D5" onclick="squareClick(this)" class="white">{{.B.D5.Code}}</div>
+<div id="E5" onclick="squareClick(this)" class="black">{{.B.E5.Code}}</div>
+<div id="F5" onclick="squareClick(this)" class="white">{{.B.F5.Code}}</div>
+<div id="G5" onclick="squareClick(this)" class="black">{{.B.G5.Code}}</div>
+<div id="H5" onclick="squareClick(this)" class="white">{{.B.H5.Code}}</div>
 <!-- 7th -->
-<div id="a6" class="white">{{.A6.Code}}</div>
-<div id="b6" class="black">{{.B6.Code}}</div>
-<div id="c6" class="white">{{.C6.Code}}</div>
-<div id="d6" class="black">{{.D6.Code}}</div>
-<div id="e6" class="white">{{.E6.Code}}</div>
-<div id="f6" class="black">{{.F6.Code}}</div>
-<div id="g6" class="white">{{.G6.Code}}</div>
-<div id="h6" class="black">{{.H6.Code}}</div>
+<div id="A6" onclick="squareClick(this)" class="white">{{.B.A6.Code}}</div>
+<div id="B6" onclick="squareClick(this)" class="black">{{.B.B6.Code}}</div>
+<div id="C6" onclick="squareClick(this)" class="white">{{.B.C6.Code}}</div>
+<div id="D6" onclick="squareClick(this)" class="black">{{.B.D6.Code}}</div>
+<div id="E6" onclick="squareClick(this)" class="white">{{.B.E6.Code}}</div>
+<div id="F6" onclick="squareClick(this)" class="black">{{.B.F6.Code}}</div>
+<div id="G6" onclick="squareClick(this)" class="white">{{.B.G6.Code}}</div>
+<div id="H6" onclick="squareClick(this)" class="black">{{.B.H6.Code}}</div>
 <!-- 8th -->
-<div id="a7" class="black">{{.A7.Code}}</div>
-<div id="b7" class="white">{{.B7.Code}}</div>
-<div id="c7" class="black">{{.C7.Code}}</div>
-<div id="d7" class="white">{{.D7.Code}}</div>
-<div id="e7" class="black">{{.E7.Code}}</div>
-<div id="f7" class="white">{{.F7.Code}}</div>
-<div id="g7" class="black">{{.G7.Code}}</div>
-<div id="h7" class="white">{{.H7.Code}}</div>
+<div id="A7" onclick="squareClick(this)" class="black">{{.B.A7.Code}}</div>
+<div id="B7" onclick="squareClick(this)" class="white">{{.B.B7.Code}}</div>
+<div id="C7" onclick="squareClick(this)" class="black">{{.B.C7.Code}}</div>
+<div id="D7" onclick="squareClick(this)" class="white">{{.B.D7.Code}}</div>
+<div id="E7" onclick="squareClick(this)" class="black">{{.B.E7.Code}}</div>
+<div id="F7" onclick="squareClick(this)" class="white">{{.B.F7.Code}}</div>
+<div id="G7" onclick="squareClick(this)" class="black">{{.B.G7.Code}}</div>
+<div id="H7" onclick="squareClick(this)" class="white">{{.B.H7.Code}}</div>
 </div>
-<button onclick="swap('a0','a1')">Click me</button>
 
  <form action="/moveform" method="POST">
-GameID: <input type="number" name="game_id">  <br>
+GameID: <input type="number" name="game_id" value="{{.G.Id}}">  <br>
 
-FROM: <input type="text" name="from_square">
-TO: <input type="text" name="to_square">
+FROM: <input id="frombox" type="text" name="from_square">
+TO: <input id="tobox" type="text" name="to_square">
 
 <input type="submit" value="Submit">
 </form>

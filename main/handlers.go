@@ -256,18 +256,8 @@ func ChessFormMove(w http.ResponseWriter, r *http.Request) {
 
 	ProcessMove(move)
 
-	t := template.New("emptyboard.html")
-	temp, err := t.ParseFiles("../public/emptyboard.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-	game := *FindGame(move.GameID)
-	board := game.Board
+	http.Redirect(w, r, "/chess/"+strconv.Itoa(move.GameID), http.StatusFound)
 
-	err = temp.Execute(w, board)
-	if err != nil {
-		log.Fatal(err)
-	}
 }
 
 func ShowBoard(w http.ResponseWriter, r *http.Request) {
@@ -283,7 +273,9 @@ func ShowBoard(w http.ResponseWriter, r *http.Request) {
 	game := *FindGame(gid)
 	board := game.Board
 
-	err = temp.Execute(w, board)
+	bo := Both{B: board, G: game}
+
+	err = temp.Execute(w, bo)
 	if err != nil {
 		log.Fatal(err)
 	}
