@@ -7,41 +7,41 @@ import (
 
 func BuildNewBoard() Board {
 	newBoard := Board{}
-	newBoard.A0.Code = BlackRook
-	newBoard.B0.Code = BlackKnight
-	newBoard.C0.Code = BlackBishop
-	newBoard.D0.Code = BlackQueen
-	newBoard.E0.Code = BlackKing
-	newBoard.F0.Code = BlackBishop
-	newBoard.G0.Code = BlackKnight
-	newBoard.H0.Code = BlackRook
+	newBoard.A8.Code = BlackRook
+	newBoard.B8.Code = BlackKnight
+	newBoard.C8.Code = BlackBishop
+	newBoard.D8.Code = BlackQueen
+	newBoard.E8.Code = BlackKing
+	newBoard.F8.Code = BlackBishop
+	newBoard.G8.Code = BlackKnight
+	newBoard.H8.Code = BlackRook
 
-	newBoard.A1.Code = BlackPawn
-	newBoard.B1.Code = BlackPawn
-	newBoard.C1.Code = BlackPawn
-	newBoard.D1.Code = BlackPawn
-	newBoard.E1.Code = BlackPawn
-	newBoard.F1.Code = BlackPawn
-	newBoard.G1.Code = BlackPawn
-	newBoard.H1.Code = BlackPawn
+	newBoard.A7.Code = BlackPawn
+	newBoard.B7.Code = BlackPawn
+	newBoard.C7.Code = BlackPawn
+	newBoard.D7.Code = BlackPawn
+	newBoard.E7.Code = BlackPawn
+	newBoard.F7.Code = BlackPawn
+	newBoard.G7.Code = BlackPawn
+	newBoard.H7.Code = BlackPawn
 
-	newBoard.A6.Code = WhitePawn
-	newBoard.B6.Code = WhitePawn
-	newBoard.C6.Code = WhitePawn
-	newBoard.D6.Code = WhitePawn
-	newBoard.E6.Code = WhitePawn
-	newBoard.F6.Code = WhitePawn
-	newBoard.G6.Code = WhitePawn
-	newBoard.H6.Code = WhitePawn
+	newBoard.A2.Code = WhitePawn
+	newBoard.B2.Code = WhitePawn
+	newBoard.C2.Code = WhitePawn
+	newBoard.D2.Code = WhitePawn
+	newBoard.E2.Code = WhitePawn
+	newBoard.F2.Code = WhitePawn
+	newBoard.G2.Code = WhitePawn
+	newBoard.H2.Code = WhitePawn
 
-	newBoard.A7.Code = WhiteRook
-	newBoard.B7.Code = WhiteKnight
-	newBoard.C7.Code = WhiteBishop
-	newBoard.D7.Code = WhiteQueen
-	newBoard.E7.Code = WhiteKing
-	newBoard.F7.Code = WhiteBishop
-	newBoard.G7.Code = WhiteKnight
-	newBoard.H7.Code = WhiteRook
+	newBoard.A1.Code = WhiteRook
+	newBoard.B1.Code = WhiteKnight
+	newBoard.C1.Code = WhiteBishop
+	newBoard.D1.Code = WhiteQueen
+	newBoard.E1.Code = WhiteKing
+	newBoard.F1.Code = WhiteBishop
+	newBoard.G1.Code = WhiteKnight
+	newBoard.H1.Code = WhiteRook
 
 	return newBoard
 }
@@ -68,8 +68,8 @@ func (b *Board) setEmpty(square string) {
 
 func (g *Board) getPieceAt(square string) Piece {
 	switch strings.ToUpper(square) {
-	case "A0":
-		return g.A0
+	case "A8":
+		return g.A8
 	case "A1":
 		return g.A1
 	case "A2":
@@ -85,8 +85,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "A7":
 		return g.A7
 
-	case "B0":
-		return g.B0
+	case "B8":
+		return g.B8
 	case "B1":
 		return g.B1
 	case "B2":
@@ -102,8 +102,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "B7":
 		return g.B7
 
-	case "C0":
-		return g.C0
+	case "C8":
+		return g.C8
 	case "C1":
 		return g.C1
 	case "C2":
@@ -120,8 +120,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "C7":
 		return g.C7
 
-	case "D0":
-		return g.D0
+	case "D8":
+		return g.D8
 	case "D1":
 		return g.D1
 	case "D2":
@@ -137,8 +137,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "D7":
 		return g.D7
 
-	case "E0":
-		return g.E0
+	case "E8":
+		return g.E8
 	case "E1":
 		return g.E1
 	case "E2":
@@ -154,8 +154,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "E7":
 		return g.E7
 
-	case "F0":
-		return g.F0
+	case "F8":
+		return g.F8
 	case "F1":
 		return g.F1
 	case "F2":
@@ -171,8 +171,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "F7":
 		return g.F7
 
-	case "G0":
-		return g.G0
+	case "G8":
+		return g.G8
 	case "G1":
 		return g.G1
 	case "G2":
@@ -188,8 +188,8 @@ func (g *Board) getPieceAt(square string) Piece {
 	case "G7":
 		return g.G7
 
-	case "H0":
-		return g.H0
+	case "H8":
+		return g.H8
 	case "H1":
 		return g.H1
 	case "H2":
@@ -213,8 +213,8 @@ func (g *Board) getPieceAt(square string) Piece {
 
 func (g *Board) setPieceAt(square string, p Piece) {
 	switch strings.ToUpper(square) {
-	case "A0":
-		g.A0 = p
+	case "A8":
+		g.A8 = p
 	case "A1":
 		g.A1 = p
 	case "A2":
@@ -230,8 +230,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "A7":
 		g.A7 = p
 
-	case "B0":
-		g.B0 = p
+	case "B8":
+		g.B8 = p
 	case "B1":
 		g.B1 = p
 	case "B2":
@@ -247,8 +247,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "B7":
 		g.B7 = p
 
-	case "C0":
-		g.C0 = p
+	case "C8":
+		g.C8 = p
 	case "C1":
 		g.C1 = p
 	case "C2":
@@ -265,8 +265,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "C7":
 		g.C7 = p
 
-	case "D0":
-		g.D0 = p
+	case "D8":
+		g.D8 = p
 	case "D1":
 		g.D1 = p
 	case "D2":
@@ -282,8 +282,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "D7":
 		g.D7 = p
 
-	case "E0":
-		g.E0 = p
+	case "E8":
+		g.E8 = p
 	case "E1":
 		g.E1 = p
 	case "E2":
@@ -299,8 +299,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "E7":
 		g.E7 = p
 
-	case "F0":
-		g.F0 = p
+	case "F8":
+		g.F8 = p
 	case "F1":
 		g.F1 = p
 	case "F2":
@@ -316,8 +316,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "F7":
 		g.F7 = p
 
-	case "G0":
-		g.G0 = p
+	case "G8":
+		g.G8 = p
 	case "G1":
 		g.G1 = p
 	case "G2":
@@ -333,8 +333,8 @@ func (g *Board) setPieceAt(square string, p Piece) {
 	case "G7":
 		g.G7 = p
 
-	case "H0":
-		g.H0 = p
+	case "H8":
+		g.H8 = p
 	case "H1":
 		g.H1 = p
 	case "H2":
