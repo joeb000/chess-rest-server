@@ -68,4 +68,16 @@ var routes = Routes{
 		"/test",
 		TemplateBoard,
 	},
+	Route{
+		"chat",
+		"GET",
+		"/chat",
+		GetSandaloneChat,
+	},
+	Route{
+		"SocketChat",
+		"GET",
+		"/ws",
+		ServeSocket,
+	},
 }

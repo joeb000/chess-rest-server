@@ -273,9 +273,14 @@ func ShowBoard(w http.ResponseWriter, r *http.Request) {
 	game := *FindGame(gid)
 	board := game.Board
 
-	bo := Both{B: board, G: game}
+	//bo := Both{B: board, G: game}
 
-	err = temp.Execute(w, bo)
+	err = temp.Execute(w,
+		struct {
+			B  Board
+			G  Game
+			Ip string
+		}{board, game, r.Host})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -294,4 +299,28 @@ func TemplateBoard(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func GetSandaloneChat(w http.ResponseWriter, r *http.Request) {
+	t := template.New("home.html")
+	homeTemp, err := t.ParseFiles("../public/home.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if r.Method != "GET" {
+		http.Error(w, "Method not allowed", 405)
+		return
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	fmt.Println(r.Host)
+	homeTemp.Execute(w, r.Host)
+}
+
+func ServeSocket(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Hersse!")
+
+	ServeWs(hub, w, r)
+	fmt.Println("Hereaaa!")
+
 }
