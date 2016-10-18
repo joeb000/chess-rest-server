@@ -35,7 +35,7 @@ func CreateGame(p Player) Game {
 	currentGameId += 1
 	g.Id = currentGameId
 	g.P1 = p
-	g.LastMove = &Move{currentGameId, 0, "A1", "A1"}
+	g.LastMove = Move{currentGameId, 0, "A1", "A1"}
 	chessgames = append(chessgames, g)
 	return g
 }

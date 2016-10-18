@@ -160,7 +160,7 @@ func ChessMove(w http.ResponseWriter, r *http.Request) {
 	ProcessMove(move)
 
 	state := FindGame(move.GameID)
-	state.LastMove = &move
+	state.LastMove = move
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(state); err != nil {
@@ -177,7 +177,7 @@ func ChessFormMove(w http.ResponseWriter, r *http.Request) {
 
 	ProcessMove(move)
 	state := FindGame(move.GameID)
-	state.LastMove = &move
+	state.LastMove = move
 	http.Redirect(w, r, "/chess/"+strconv.Itoa(move.GameID), http.StatusFound)
 
 }

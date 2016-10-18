@@ -15,7 +15,7 @@ type Game struct {
 	P1       Player `json:"player1"`
 	P2       Player `json:"player2"`
 	Board    Board  `json:"board"`
-	LastMove *Move  `json:"last_move"`
+	LastMove Move   `json:"last_move"`
 }
 
 type Player struct {

@@ -120,93 +120,100 @@
     <script>
         $(document).ready(function() {
 
-                    var lmFrom = "{{.G.LastMove.FromSquare}}"
-                    var lmTo = "{{.G.LastMove.ToSquare}}"
+            var lmFrom = "{{.G.LastMove.FromSquare}}"
+            var lmTo = "{{.G.LastMove.ToSquare}}"
 
-                    if ($("#" + lmFrom).attr("class") == "white") {
-                        $("#" + lmFrom).attr('class', 'white-box');
-                    } else if ($("#" + lmFrom).attr("class") == "black") {
-                        $("#" + lmFrom).attr('class', 'black-box');
+            if ($("#" + lmFrom).attr("class") == "white") {
+                $("#" + lmFrom).attr('class', 'white-box');
+            } else if ($("#" + lmFrom).attr("class") == "black") {
+                $("#" + lmFrom).attr('class', 'black-box');
+            }
+
+            if ($("#" + lmTo).attr("class") == "white") {
+                $("#" + lmTo).attr('class', 'white-box');
+            } else if ($("#" + lmTo).attr("class") == "black") {
+                $("#" + lmTo).attr('class', 'black-box');
+            }
+
+            $(".white").click(function() {
+                squareClick($(this))
+            })
+            $(".black").click(function() {
+                squareClick($(this))
+            })
+            $(".white-box").click(function() {
+                squareClick($(this))
+            })
+            $(".black-box").click(function() {
+                squareClick($(this))
+            })
+
+            $('#toggleReverse').click(function() {
+                $('.reverse-chessboard').toggle()
+                $('.chessboard').toggle()
+
+            });
+
+            $('#frombox').keyup(function(e) {
+                var key = e.which;
+                if (key == 13) {
+                    $('#submitMove').submit();
+                }
+            });
+            $('#tobox').keyup(function(e) {
+                var key = e.which;
+                if (key == 13) {
+                    $('#submitMove').submit();
+                }
+            });
+            $(document).keyup(function(e) {
+                console.log("hay" + $(':focus').attr("id"))
+                if ($(':focus').attr("id") == "msg") {
+                    console.log("sweet")
+                    return true;
+                } else if (e.which == 13) {
+                    console.log("made it")
+                    $('#submitMove').submit();
+                }
+            });
+
+            var isSquareSelected = false;
+            var bothSquaresSelected = false;
+
+            var selectedSquareID = ""
+            var targetSquareID = ""
+
+            function squareClick(e) {
+                if (isSquareSelected) {
+                    if (e.attr('id') == selectedSquareID || e.attr('id') == targetSquareID) {
+                        //clicking a highlighted square
+                        isSquareSelected = false
+                        $("#" + selectedSquareID).css('background-color', '');
+                        $("#" + targetSquareID).css('background-color', '');
+                        selectedSquareID = ""
+                        targetSquareID = ""
+                        bothSquaresSelected=false
+
+                    } else if (!bothSquaresSelected){
+                        //clicking a target square (piece already selected)
+                        $("#tobox").val(e.attr("id"))
+                        e.css('background-color', 'red')
+                        targetSquareID = e.attr("id")
+                        bothSquaresSelected=true
                     }
+                } else {
+                  //no square selected yet
+                    isSquareSelected = true
+                    selectedSquareID = e.attr("id")
+                    $("#frombox").val(e.attr("id"))
+                    e.css('background-color', 'purple')
+                }
+            }
 
-                    if ($("#" + lmTo).attr("class") == "white") {
-                        $("#" + lmTo).attr('class', 'white-box');
-                    } else if ($("#" + lmTo).attr("class") == "black") {
-                        $("#" + lmTo).attr('class', 'black-box');
-                    }
-                    var isSquareSelected = false;
-                    var selectedSquareID = ""
-					var targetSquareID = ""
+            $("#frombox")
+            $("#tobox").keyup()
 
-                    $(".white").click(function() {
-                        squareClick($(this))
-                    })
-                    $(".black").click(function() {
-                        squareClick($(this))
-                    })
-                    $(".white-box").click(function() {
-                        squareClick($(this))
-                    })
-                    $(".black-box").click(function() {
-                        squareClick($(this))
-                    })
-
-                    $('#toggleReverse').click(function() {
-                        $('.reverse-chessboard').toggle()
-                        $('.chessboard').toggle()
-
-                    });
-
-                    $('#frombox').keyup(function(e) {
-                        var key = e.which;
-                        if (key == 13) {
-                            $('#submitMove').submit();
-                        }
-                    });
-                    $('#tobox').keyup(function(e) {
-                        var key = e.which;
-                        if (key == 13) {
-                            $('#submitMove').submit();
-                        }
-                    });
-                    $(document).keyup(function(e) {
-                        console.log("hay" + $(':focus').attr("id"))
-                        if ($(':focus').attr("id") == "msg") {
-                            console.log("sweet")
-                            return true;
-                        } else if (e.which == 13) {
-                            console.log("made it")
-                            $('#submitMove').submit();
-                        }
-                    });
-
-                    function squareClick(e) {
-                        if (isSquareSelected) {
-                            if (e.attr('id') == selectedSquareID || e.attr('id')==targetSquareID) {
-								isSquareSelected=false
-                               $("#" + selectedSquareID).css('background-color', '');
-								$("#" + targetSquareID).css('background-color', '');
-								
-                            } else {
-                                $("#tobox").val(e.attr("id"))
-                                e.css('background-color', 'red')
-								targetSquareID=e.attr("id")
-                            	} 
-							}
-							else {
-								isSquareSelected=true
-								selectedSquareID=e.attr("id")
-                                $("#frombox").val(e.attr("id"))
-                                e.css('background-color', 'purple')
-
-                            }
-                            i++;
-                        }
-
-                        $("#frombox")
-                        $("#tobox").keyup()
-
-                    });
+        });
     </script>
     <div id="board" class="chessboard">
 
