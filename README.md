@@ -40,3 +40,5 @@ Chess server exposes HTTP endpoints that can handle `GET` and `POST` calls.
     
 To check game state: http://localhost:8080/find/1
 
+To see visual GUI: http://localhost:8080/chess/1
+
