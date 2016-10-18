@@ -46,6 +46,47 @@ func BuildNewBoard() Board {
 	return newBoard
 }
 
+func PreviousBoard() Board {
+	newBoard := Board{}
+	newBoard.A8.Code = BlackRook
+	newBoard.B8.Code = BlackKnight
+	newBoard.C8.Code = BlackBishop
+	newBoard.D8.Code = BlackQueen
+	newBoard.E8.Code = BlackKing
+	newBoard.F8.Code = BlackBishop
+	newBoard.G8.Code = BlackKnight
+	newBoard.H8.Code = BlackRook
+
+	newBoard.A7.Code = BlackPawn
+	newBoard.B7.Code = BlackPawn
+	newBoard.C7.Code = BlackPawn
+	newBoard.D7.Code = BlackPawn
+	newBoard.E7.Code = BlackPawn
+	newBoard.F7.Code = BlackPawn
+	newBoard.G7.Code = BlackPawn
+	newBoard.H7.Code = BlackPawn
+
+	newBoard.A2.Code = WhitePawn
+	newBoard.B2.Code = WhitePawn
+	newBoard.C2.Code = WhitePawn
+	newBoard.D2.Code = WhitePawn
+	newBoard.E2.Code = WhitePawn
+	newBoard.F2.Code = WhitePawn
+	newBoard.G2.Code = WhitePawn
+	newBoard.H2.Code = WhitePawn
+
+	newBoard.A1.Code = WhiteRook
+	newBoard.B1.Code = WhiteKnight
+	newBoard.C1.Code = WhiteBishop
+	newBoard.D1.Code = WhiteQueen
+	newBoard.E1.Code = WhiteKing
+	newBoard.F1.Code = WhiteBishop
+	newBoard.G1.Code = WhiteKnight
+	newBoard.H1.Code = WhiteRook
+
+	return newBoard
+}
+
 const (
 	BlackRook   = "&#9820;"
 	BlackKnight = "&#9822;"

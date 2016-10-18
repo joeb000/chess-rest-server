@@ -11,6 +11,13 @@
             border: 25px solid #333;
         }
 
+        .reverse-chessboard {
+            width: 480px;
+            height: 480px;
+            margin: 20px;
+            border: 25px solid #333;
+        }
+
         .black {
             float: left;
             width: 60px;
@@ -20,6 +27,18 @@
             text-align: center;
             display: table-cell;
             vertical-align: middle;
+        }
+
+        .black-box {
+            float: left;
+            width: 56px;
+            height: 56px;
+            background-color: #999;
+            font-size: 40px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            border: 2px solid #00FFFF;
         }
 
         .white {
@@ -33,7 +52,17 @@
             vertical-align: middle;
         }
 
-
+        .white-box {
+            float: left;
+            width: 56px;
+            height: 56px;
+            background-color: #fff;
+            font-size: 40px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            border: 2px solid #00FFFF;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
@@ -90,9 +119,22 @@
 <body>
     <script>
         $(document).ready(function() {
+
+            var lmFrom = "{{.G.LastMove.FromSquare}}"
+            var lmTo = "{{.G.LastMove.ToSquare}}"
+
+            if ($("#" + lmFrom).attr("class") == "white") {
+                $("#" + lmFrom).attr('class', 'white-box');
+            } else if ($("#" + lmFrom).attr("class") == "black") {
+                $("#" + lmFrom).attr('class', 'black-box');
+            }
+
+            if ($("#" + lmTo).attr("class") == "white") {
+                $("#" + lmTo).attr('class', 'white-box');
+            } else if ($("#" + lmTo).attr("class") == "black") {
+                $("#" + lmTo).attr('class', 'black-box');
+            }
             var i = 3;
-
-
 
             $(".white").click(function() {
                 squareClick($(this))
@@ -100,6 +142,18 @@
             $(".black").click(function() {
                 squareClick($(this))
             })
+            $(".white-box").click(function() {
+                squareClick($(this))
+            })
+            $(".black-box").click(function() {
+                squareClick($(this))
+            })
+
+            $('#toggleReverse').click(function() {
+                $('.reverse-chessboard').toggle()
+                $('.chessboard').toggle()
+
+            });
 
             $('#frombox').keyup(function(e) {
                 var key = e.which;
@@ -114,14 +168,13 @@
                 }
             });
             $(document).keyup(function(e) {
-				console.log("hay"+$(':focus').attr("id"))
-				if ($(':focus').attr("id")=="msg"){
-					console.log("sweet")
-					return true;
-				}
-                else if (e.which == 13) {
+                console.log("hay" + $(':focus').attr("id"))
+                if ($(':focus').attr("id") == "msg") {
+                    console.log("sweet")
+                    return true;
+                } else if (e.which == 13) {
                     console.log("made it")
-                   $('#submitMove').submit();
+                    $('#submitMove').submit();
                 }
             });
 
@@ -142,7 +195,7 @@
 
         });
     </script>
-    <div class="chessboard">
+    <div id="board" class="chessboard">
 
         <div id="A8" class="white">{{.B.A8.Code}}</div>
         <div id="B8" class="black">{{.B.B8.Code}}</div>
@@ -218,6 +271,88 @@
 
     </div>
 
+    <div class="reverse-chessboard" style="display: none;">
+
+        <div id="A1" class="black">{{.B.A1.Code}}</div>
+        <div id="B1" class="white">{{.B.B1.Code}}</div>
+        <div id="C1" class="black">{{.B.C1.Code}}</div>
+        <div id="D1" class="white">{{.B.D1.Code}}</div>
+        <div id="E1" class="black">{{.B.E1.Code}}</div>
+        <div id="F1" class="white">{{.B.F1.Code}}</div>
+        <div id="G1" class="black">{{.B.G1.Code}}</div>
+        <div id="H1" class="white">{{.B.H1.Code}}</div>
+
+
+        <div id="A2" class="white">{{.B.A2.Code}}</div>
+        <div id="B2" class="black">{{.B.B2.Code}}</div>
+        <div id="C2" class="white">{{.B.C2.Code}}</div>
+        <div id="D2" class="black">{{.B.D2.Code}}</div>
+        <div id="E2" class="white">{{.B.E2.Code}}</div>
+        <div id="F2" class="black">{{.B.F2.Code}}</div>
+        <div id="G2" class="white">{{.B.G2.Code}}</div>
+        <div id="H2" class="black">{{.B.H2.Code}}</div>
+
+        <div id="A3" class="black">{{.B.A3.Code}}</div>
+        <div id="B3" class="white">{{.B.B3.Code}}</div>
+        <div id="C3" class="black">{{.B.C3.Code}}</div>
+        <div id="D3" class="white">{{.B.D3.Code}}</div>
+        <div id="E3" class="black">{{.B.E3.Code}}</div>
+        <div id="F3" class="white">{{.B.F3.Code}}</div>
+        <div id="G3" class="black">{{.B.G3.Code}}</div>
+        <div id="H3" class="white">{{.B.H3.Code}}</div>
+
+
+
+        <div id="A4" class="white">{{.B.A4.Code}}</div>
+        <div id="B4" class="black">{{.B.B4.Code}}</div>
+        <div id="C4" class="white">{{.B.C4.Code}}</div>
+        <div id="D4" class="black">{{.B.D4.Code}}</div>
+        <div id="E4" class="white">{{.B.E4.Code}}</div>
+        <div id="F4" class="black">{{.B.F4.Code}}</div>
+        <div id="G4" class="white">{{.B.G4.Code}}</div>
+        <div id="H4" class="black">{{.B.H4.Code}}</div>
+
+        <div id="A5" class="black">{{.B.A5.Code}}</div>
+        <div id="B5" class="white">{{.B.B5.Code}}</div>
+        <div id="C5" class="black">{{.B.C5.Code}}</div>
+        <div id="D5" class="white">{{.B.D5.Code}}</div>
+        <div id="E5" class="black">{{.B.E5.Code}}</div>
+        <div id="F5" class="white">{{.B.F5.Code}}</div>
+        <div id="G5" class="black">{{.B.G5.Code}}</div>
+        <div id="H5" class="white">{{.B.H5.Code}}</div>
+
+        <div id="A6" class="white">{{.B.A6.Code}}</div>
+        <div id="B6" class="black">{{.B.B6.Code}}</div>
+        <div id="C6" class="white">{{.B.C6.Code}}</div>
+        <div id="D6" class="black">{{.B.D6.Code}}</div>
+        <div id="E6" class="white">{{.B.E6.Code}}</div>
+        <div id="F6" class="black">{{.B.F6.Code}}</div>
+        <div id="G6" class="white">{{.B.G6.Code}}</div>
+        <div id="H6" class="black">{{.B.H6.Code}}</div>
+
+
+        <div id="A7" class="black">{{.B.A7.Code}}</div>
+        <div id="B7" class="white">{{.B.B7.Code}}</div>
+        <div id="C7" class="black">{{.B.C7.Code}}</div>
+        <div id="D7" class="white">{{.B.D7.Code}}</div>
+        <div id="E7" class="black">{{.B.E7.Code}}</div>
+        <div id="F7" class="white">{{.B.F7.Code}}</div>
+        <div id="G7" class="black">{{.B.G7.Code}}</div>
+        <div id="H7" class="white">{{.B.H7.Code}}</div>
+
+
+
+        <div id="A8" class="white">{{.B.A8.Code}}</div>
+        <div id="B8" class="black">{{.B.B8.Code}}</div>
+        <div id="C8" class="white">{{.B.C8.Code}}</div>
+        <div id="D8" class="black">{{.B.D8.Code}}</div>
+        <div id="E8" class="white">{{.B.E8.Code}}</div>
+        <div id="F8" class="black">{{.B.F8.Code}}</div>
+        <div id="G8" class="white">{{.B.G8.Code}}</div>
+        <div id="H8" class="black">{{.B.H8.Code}}</div>
+
+    </div>
+
     <form id="submitMove" action="/moveform" method="POST">
         GameID: <input type="number" name="game_id" value="{{.G.Id}}"> <br> FROM: <input id="frombox" type="text" name="from_square"> TO: <input id="tobox" type="text" name="to_square">
 
@@ -231,6 +366,8 @@
             <input type="text" id="msg" size="64" />
         </form>
     </div>
+
+    <button id="toggleReverse">Click to toggle</button>
 </body>
 
 </html>

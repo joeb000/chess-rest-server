@@ -9,47 +9,26 @@ type Move struct {
 	ToSquare   string `json:"to_square"`
 	//Time     time.Time `json:"time"`
 }
-type Both struct {
-	B Board
-	G Game
-}
-
-type OldGame struct {
-	Id           int `json:"id"`
-	P1           Player
-	P2           Player
-	CurrentState [8][8]OldPiece
-}
 
 type Game struct {
-	Id    int `json:"id"`
-	P1    Player
-	P2    Player
-	Board Board
+	Id       int    `json:"id"`
+	P1       Player `json:"player1"`
+	P2       Player `json:"player2"`
+	Board    Board  `json:"board"`
+	LastMove *Move  `json:"last_move"`
 }
-
-type Games []OldGame
 
 type Player struct {
-	Id     int
-	Name   string
-	Wins   int
-	Losses int
-	auth   string
+	Id     int    `json:"id"`
+	Name   string `json:"name"`
+	Wins   int    `json:"wins"`
+	Losses int    `json:"losses"`
+	auth   string `json:"auth_string"`
 }
 
-type OldPiece struct {
-	Color bool
-	Type  string
-	Id    int
-}
 type Piece struct {
-	Code     string
-	PlayerId int
-}
-
-type Column struct {
-	a, b, c, d, e, f, g, h string
+	Code     string `json:"code"`
+	PlayerId int    `json:"player_id"`
 }
 
 type Board struct {

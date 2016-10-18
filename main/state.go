@@ -35,6 +35,7 @@ func CreateGame(p Player) Game {
 	currentGameId += 1
 	g.Id = currentGameId
 	g.P1 = p
+	g.LastMove = &Move{currentGameId, 0, "A1", "A1"}
 	chessgames = append(chessgames, g)
 	return g
 }
@@ -54,9 +55,4 @@ func ProcessMove(move Move) {
 func (g *Game) initState() {
 	gameBoard := BuildNewBoard()
 	g.Board = gameBoard
-}
-
-func (b *Board) edidA4(p Piece) {
-	b.A4 = p
-
 }
