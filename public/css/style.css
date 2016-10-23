@@ -1,6 +1,19 @@
-   .chessboard {
-            width: 480px;
-            height: 480px;
+.row {
+    width: 100%;
+}
+.col-left {
+    float: left;
+}
+.col-right {
+    float: left;
+    width:30%;
+    margin: 0 0 0 30px;
+
+}
+
+        .chessboard {
+            width: 40vw;
+            height: 40vw;
             margin: 20px;
             border: 25px solid #333;
         }
@@ -14,8 +27,8 @@
 
         .black {
             float: left;
-            width: 60px;
-            height: 60px;
+            width: 5vw;
+            height: 5vw;
             background-color: #999;
             font-size: 40px;
             text-align: center;
@@ -25,20 +38,20 @@
 
         .black-box {
             float: left;
-            width: 56px;
-            height: 56px;
+            width: 5vw;
+            height: 5vw;
             background-color: #999;
             font-size: 40px;
             text-align: center;
             display: table-cell;
             vertical-align: middle;
-            border: 2px solid #00FFFF;
+/*            border: 2px solid #00FFFF;*/
         }
 
         .white {
             float: left;
-            width: 60px;
-            height: 60px;
+            width: 5vw;
+            height: 5vw;
             background-color: #fff;
             font-size: 40px;
             text-align: center;
@@ -48,12 +61,22 @@
 
         .white-box {
             float: left;
-            width: 56px;
-            height: 56px;
+            width: 5vw;
+            height: 5vw;
             background-color: #fff;
             font-size: 40px;
             text-align: center;
             display: table-cell;
             vertical-align: middle;
-            border: 2px solid #00FFFF;
         }
+
+@media (max-width:1025px) {
+    .white, .white-box, .black-box, .black {
+        font-size :28px !important;
+    }
+
+@media (max-width:768px) {
+    .white, .white-box, .black-box, .black {
+        font-size :20px !important;
+    }
+}
