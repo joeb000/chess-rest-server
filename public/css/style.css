@@ -1,16 +1,24 @@
-.row {
-    width: 100%;
-}
-.col-left {
-    float: left;
-}
-.col-right {
-    float: left;
-    width:30%;
-    margin: 0 0 0 30px;
-
+h3 {
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
 }
 
+/*column styles*/        
+
+        .row {
+            width: 100%;
+        }
+        .col-left {
+            float: left;
+        }
+        .col-right {
+            float: left;
+            width:45vw;
+            height: 40vw;
+            margin: 20 0 0 30px;
+
+        }
+/*board styles*/
         .chessboard {
             width: 40vw;
             height: 40vw;
@@ -19,8 +27,8 @@
         }
 
         .reverse-chessboard {
-            width: 480px;
-            height: 480px;
+            width: 40vw;
+            height: 40vw;
             margin: 20px;
             border: 25px solid #333;
         }
@@ -45,7 +53,6 @@
             text-align: center;
             display: table-cell;
             vertical-align: middle;
-/*            border: 2px solid #00FFFF;*/
         }
 
         .white {
@@ -70,13 +77,71 @@
             vertical-align: middle;
         }
 
+        .white-box, .black-box {
+            box-sizing: border-box;
+            border: 4px solid #00ffff; 
+        }
+/* form styles */
+.form-field {
+    width: 100%;
+    padding: 12px 20px 12px 20px;
+    border: 3px solid #000;
+}
+.input-special {
+    border: none !important;
+}
+.btn-hot {
+    font-size: 18px;
+    background-color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 6px 0 0 0;
+    padding: 12px 20px 12px 20px;
+    border-radius: none;
+    border: 3px solid #000;
+}
+.btn-hot:hover {
+    color: red;
+    background-color: #000;
+}
+ .scroll-box {
+    background: #f4f4f4;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    height: 25vw; /* maximum height of the box, feel free to change this! */
+    margin-bottom: 20px;
+    padding: 15px;
+    overflow-y: scroll;
+}
+.fa {
+padding:4px;
+}
+.game-info {
+    margin-left: 20px;
+}
+/* responsive styles */
 @media (max-width:1025px) {
     .white, .white-box, .black-box, .black {
         font-size :28px !important;
     }
+    .white-box, .black-box {
+            box-sizing: border-box;
+            border: 2px solid #00ffff; 
+        }
+}
 
 @media (max-width:768px) {
+/*
+    .chessboard { 
+        width: 80vw;
+        height: 80vw;
+    }
+*/
     .white, .white-box, .black-box, .black {
         font-size :20px !important;
     }
+    .white-box, .black-box {
+            box-sizing: border-box;
+            border: 1px solid #00ffff; 
+    }
+    
 }
