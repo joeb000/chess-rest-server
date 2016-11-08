@@ -41,15 +41,15 @@ func CreateGame(p Player) Game {
 }
 
 func ProcessMove(move Move) {
-	g := FindGame(move.GameID)
-	p := g.Board.getPieceAt(move.FromSquare)
-	g.Board.setPieceAt(move.ToSquare, p)
-	g.Board.setEmpty(move.FromSquare)
-	fmt.Printf("piece at %s, is %v\n", move.FromSquare, p)
-	//p2 := *g.Board.getPieceAt(move.ToSquare)
-	//p2 = p
-
-	//move.FromSquare
+	if !IsValidMove(move) {
+		fmt.Println("Not a valid move")
+	} else {
+		g := FindGame(move.GameID)
+		p := g.Board.getPieceAt(move.FromSquare)
+		g.Board.setPieceAt(move.ToSquare, p)
+		g.Board.setEmpty(move.FromSquare)
+		fmt.Printf("piece at %s, is %v\n", move.FromSquare, p)
+	}
 }
 
 func (g *Game) initState() {
